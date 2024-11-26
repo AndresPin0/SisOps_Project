@@ -1,12 +1,22 @@
-Para correr el .sh en Linux primero hay que darle permisos de ejecución:
+# Para correr el .sh en Linux primero hay que darle permisos de ejecución:
 
 - `chmod +x admin_tool.sh`
 - `chmod +x admin_tool_macOS.sh`
 
-Luego para ejecutarlo:
+#Luego para ejecutarlo:
 
 - `./admin_tool.sh`
 - `./admin_tool_macOS.sh`
+
+# Para correr el .ps1 en powershell:
+Primero hay que habilitar la ejecución de scripts:
+
+- `Get-ExecutionPolicy`
+- `Set-ExecutionPolicy RemoteSigned`
+
+# Luego para ejecutarlo:
+
+- `.\AdminTool.ps1`
 
 
 ## Adapté el proyecto de bash para que se pudiera ejecutar en mi máquina macOS, ya que no hay muchas diferencias,
