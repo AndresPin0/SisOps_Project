@@ -16,7 +16,7 @@ Primero hay que habilitar la ejecución de scripts:
 
 # Luego para ejecutarlo:
 
-- `.\AdminTool.ps1`
+- `.\admin_tool.ps1`
 
 
 ## Adapté el proyecto de bash para que se pudiera ejecutar en mi máquina macOS, ya que no hay muchas diferencias,
