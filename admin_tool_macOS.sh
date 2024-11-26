@@ -64,14 +64,18 @@ while true; do
                         cut -d: -f1 /etc/passwd
                         ;;
                     2)
-                        for user in $(dscl . list /Users | grep -v '_'); do
-                            last_set=$(sudo dscl . -read /Users/$user accountPolicyData 2>/dev/null | grep passwordLastSetTime | awk '{print $2}')
-                            if [ -n "$last_set" ]; then
-                                last_set_date=$(date -r ${last_set%?} '+%Y-%m-%d %H:%M:%S')
-                                echo "Usuario: $user - Último cambio de contraseña: $last_set_date"
-                            fi
-                        done
-                        ;;
+    echo "Listado de usuarios y detalles de la cuenta:"
+    for user in $(dscl . list /Users | grep -v '_'); do
+        account_info=$(sudo dscl . -read /Users/$user)
+        
+        creation_date=$(echo "$account_info" | grep "creationTimestamp:" | cut -d' ' -f2-)
+        if [[ ! -z "$creation_date" ]]; then
+            echo "Usuario: $user - Fecha de creación de la cuenta: $creation_date"
+        else
+            echo "Usuario: $user - Detalles de la cuenta no disponibles"
+        fi
+    done
+    ;;
                     3)
                         read -p "Ingrese el nombre de usuario: " usuario
                         sudo passwd $usuario
